@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.js"></script>
+    <script>
+        function getTimes(){
+            var now = moment();
+            var future = moment([now.year(), 11, 31]);
+            document.getElementById('week').innerHTML = now.isoWeek().toString();
+            document.getElementById('date').innerHTML = now.format('DD.MM.YYYY').toString();
+            document.getElementById('weeks-remaining').innerHTML = (52 - now.isoWeek()).toString();
+            document.getElementById('days-remaining').innerHTML = (future.dayOfYear() - now.dayOfYear()).toString();
+        }
+        window.onload = getTimes;
+    </script>
+</head>
+<body>
+    <h1>Mikä viikko nyt on?</h1>
+    <h3>Nyt on viikko <span id="week"></span></h3>
+    <p>Tänään on <span id="date"></span></p>
+    <p>Vuotta on jäljellä vielä
+        <span id="weeks-remaining"></span> viikkoa
+       (<span id="days-remaining"></span> päivää)
+    </p>
+</body>
+
+</html>
